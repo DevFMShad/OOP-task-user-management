@@ -20,6 +20,5 @@ abstract class AbstractUser {
         return $this->email;
     }
 
-    // Force child classes to implement userRole()
     abstract public function userRole();
 }
