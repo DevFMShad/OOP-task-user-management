@@ -6,10 +6,10 @@ abstract class AbstractUser {
     protected $email;
     protected $password;
 
-    public function __construct($name, $email, $password) {
+    public function __construct($name, $email, $password, $isHashed = false) {
         $this->name = $name;
         $this->email = $email;
-        $this->password = password_hash($password, PASSWORD_DEFAULT); // Hashing password
+        $this->password = $password; // Store as-is (plain text in this case)
     }
 
     public function getName() {
@@ -20,5 +20,9 @@ abstract class AbstractUser {
         return $this->email;
     }
 
-    abstract public function userRole();
+    public function getPassword(): string {
+        return $this->password;
+    }
+
+    abstract public function userRole(): string;
 }
